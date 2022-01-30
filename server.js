@@ -223,6 +223,9 @@ app.post('/upload', upload.single('resume'), (req, res, next) => {
 });
 
 
-app.listen(3000, () => {
-    console.log("Listening on port 3000");
+var port = process.env.PORT || '3001'
+app.listen(port, err => {
+    if (err)
+        throw err
+    console.log('Server listening on port', port)
 });
