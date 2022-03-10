@@ -1,0 +1,260 @@
+#logoCenter {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 42px;
+}
+
+.logoImage {
+  height: 50px;
+  position: relative;
+  left: 18px;
+}
+
+:root {
+  --offcanvas-width: 270px;
+  --topNavbarHeight: 76px;
+}
+
+.sidebar-nav {
+  width: var(--offcanvas-width);
+}
+
+.dropdown-menu {
+  min-width: 200px;
+  padding: 0;
+}
+.btn-group {
+  width: fit-content;
+}
+
+.profileDropDown {
+  padding: 0;
+}
+
+.profileDropDown div {
+  display: inline-block;
+}
+
+.profileDropDown div svg {
+  position: relative;
+  bottom: 0;
+  margin: 0;
+}
+
+.profileDropDown div img {
+  position: relative;
+  bottom: 0;
+  margin: 0;
+  border-radius: 50%;
+}
+
+.profileText {
+  display: none;
+  margin: 0;
+}
+
+.searchBar {
+  display: none;
+  width: 250px;
+}
+
+.form-control:focus,
+.form-select:focus,
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.nav-link {
+  color: rgb(0, 0, 0);
+  padding-top: 4px;
+}
+
+.nav-link svg {
+  height: 20px;
+  width: 20px;
+}
+
+.showInLg {
+  display: none;
+}
+
+.searchBarDropDownsvg svg {
+  height: 20px;
+  width: 20px;
+}
+
+@media (min-width: 992px) {
+  body::after {
+    overflow: auto !important;
+    padding: 0;
+  }
+  .offcanvas-backdrop {
+    display: none;
+  }
+  .sidebar-nav {
+    transform: none;
+    visibility: visible !important;
+  }
+
+  .bodyContainer {
+    position: relative;
+    left: 270px;
+    width: calc(100% - 270px);
+  }
+  .maxWidthHide,
+  .xMaxWidthHide {
+    display: none;
+  }
+  .searchBar {
+    display: inline-flex;
+    width: 250px;
+  }
+  .profileText {
+    display: flex;
+    margin: 0;
+  }
+  .profileDropDown div svg {
+    position: relative;
+    bottom: 15px;
+    margin: 0 15px;
+  }
+
+  .profileDropDown div img {
+    position: relative;
+    bottom: 12px;
+    margin: 0 6px;
+    border-radius: 50%;
+  }
+  .marginRight {
+    margin-left: auto;
+  }
+  .showInLg {
+    display: flex;
+  }
+  .showInSm {
+    display: none;
+  }
+  .logoImage {
+    height: 50px;
+    left: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .profileDropDown div svg {
+    position: relative;
+    bottom: 0;
+    margin: 0;
+    display: none;
+  }
+
+  .profileDropDown div img {
+    position: relative;
+    bottom: 0;
+    margin: 0;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+  .logoImage {
+    height: 40px;
+    left: 0;
+  }
+  .navbar-expand-xl svg {
+    height: 25px;
+    width: 25px;
+  }
+  .searchBarDropDownsvg svg {
+    height: 16px;
+    width: 16px;
+  }
+}
+.dropdown-menu[data-bs-popper] {
+  margin-top: 0rem;
+}
+
+.form-floating > .form-control {
+  height: calc(3.5rem + 100px);
+}
+
+.subContainer {
+  margin-top: 20px;
+  padding-left: 50px;
+}
+
+.subContainer > h6 {
+  margin-top: 20px;
+}
+
+.ContainerHead {
+  /* position: relative;
+  top: 50px; */
+  width: fit-content;
+  margin: 50px auto 20px auto;
+}
+
+form * {
+  font-size: 17px;
+}
+
+.pageHeading {
+  margin: 30px auto;
+  text-align: center;
+}
+
+
+.entriesCardLink{
+  text-decoration: none;
+  color: black;
+}
+
+.entriesCardLink:hover{
+  color: black;
+}
+
+.Dashboard{
+  padding: 20px;
+}
+
+.entriesCardLink .card{
+  background-color: #a4eaff;
+}
+
+.successPage .Heading{
+  width: fit-content;
+  margin: 40px auto;
+}
+
+.successPage .Heading h1 svg{
+  position: relative;
+  right: 10px;
+  bottom: 3px;
+}
+
+.successPage p{
+  padding: 0 20px;
+  text-align: center;
+}
+
+.profilePic img{
+  /* border-radius: 50%; */
+  width: 200px;
+}
+
+.nameHead{
+  font-size: 40px;
+}
+
+.logIn{
+  margin-top: 25vh;
+  max-width: 1000px;
+}
+
+.fitContent{
+  width: fit-content;
+}
+
+.logIn img{
+  width: 150px;
+}

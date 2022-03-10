@@ -1,11 +1,11 @@
 {
   "name": "passport-security",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +25,14 @@
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lakshchawla/Job-India-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lakshchawla/Job-India-/issues"
+  },
+  "homepage": "https://github.com/lakshchawla/Job-India-#readme",
+  "description": ""
 }

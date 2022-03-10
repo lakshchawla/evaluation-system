@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include("./../components/sidebar") %>
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./../components/header") %>
+
+        <div class="Dashboard">
+            <div class="row">
+                <% societies.slice().reverse().forEach(society=> { %>
+                <div class="col-sm-4 mt-2">
+                    <a href="/professional-society/<%= society._id %>" class="entriesCardLink">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= society.Society_Name %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><%= society.Domain %></h6>
+                                <p class="card-text"><%= society.Description.substring(0,200) %></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+</body>
+
+</html>

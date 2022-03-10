@@ -1,0 +1,30 @@
+.FormControl{
+    width: 50%;
+    min-width: 527px;
+    margin: 90px auto;
+}
+
+.FormControl h4{
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+.form-floating>.form-control{
+    height: calc(3.5rem + 100px);
+}
+
+.subContainer{
+    margin-top: 20px;
+    padding-left: 50px;
+}
+
+.subContainer>h6{
+    margin-top: 20px;
+}
+
+.ContainerHead{
+    /* position: relative;
+    top: 50px; */
+    width: fit-content;
+    margin: 50px auto 20px auto;
+}

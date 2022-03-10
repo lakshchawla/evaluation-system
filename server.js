@@ -72,29 +72,13 @@ function isLoggedOut(req, res, next) {
 }
 
 // ROUTES
-app.get('/', (req, res) => {
-    res.render("index", { title: "Home" });
+app.get('/', isLoggedIn, (req, res) => {
+    res.render("index");
 });
 
-app.get('/about', (req, res) => {
-    res.render("about");
-})
-
-app.get('/learn-more', (req, res) => {
-    res.render("learnMore");
-})
-
-app.get('/priority-applicant', (req, res) => {
-    res.render("priorityApplicant");
-})
-
-app.get('/resume-display', (req, res) => {
-    res.render("resumeDisplay");
-})
-
-app.get('/success', (req, res) => {
-    res.render("success");
-})
+app.get('/profile', isLoggedIn, (req, res) => {
+    res.render("profile");
+});
 
 app.get('/login', isLoggedOut, (req, res) => {
     const response = {
@@ -107,8 +91,10 @@ app.get('/login', isLoggedOut, (req, res) => {
 
 app.post('/login', passport.authenticate('local', {
     failureRedirect: '/login?error=true',
-    successRedirect: '/admin-dashboard',
+    successRedirect: '/',
 }));
+
+app.get('/signup', )
 
 app.get('/logout', function(req, res) {
     req.logout();
@@ -132,98 +118,8 @@ app.get('/logout', function(req, res) {
 
 /****************************************************************************************************************************************************/
 
-var multer = require('multer');
-var fs = require('fs');
-var path = require('path');
 
-var imageSchema = new mongoose.Schema({
-    First_Name: String,
-    Last_Name: String,
-    Contact: String,
-    Date_of_Birth: Date,
-    Gender: String,
-    Email: String,
-    City: String,
-    State: String,
-    Pincode: String,
-    img: {
-        data: String,
-        contentType: String
-    }
-});
-
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, 'pdf' + '-' + Date.now() + '.pdf')
-    }
-});
-
-var upload = multer({ storage: storage });
-
-var candDetailsModel = new mongoose.model('candidate-details', imageSchema);
-
-app.get('/admin-dashboard', isLoggedIn, (req, res) => {
-    candDetailsModel.find({}, (err, items) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send('An error occurred', err);
-        } else {
-            res.render('admin-dashboard', { items: items });
-        }
-    });
-});
-
-app.get('/get-hired', (req, res) => {
-    res.render('profile');
-})
-
-app.get('/downloadFile/:reqSite', function(req, res) {
-    var file = path.join(__dirname + '/uploads/' + req.params.reqSite);
-
-    res.download(file, function(err) {
-        if (err) {
-            console.log("Error");
-            console.log(err);
-        } else {
-            console.log("Success");
-        }
-    });
-});
-
-//Details Post Request
-app.post('/upload', upload.single('resume'), (req, res, next) => {
-    // console.log(path.join(__dirname + '/uploads/' + req.file.filename + '.pdf'));
-    var obj = {
-        First_Name: req.body.First_Name,
-        Last_Name: req.body.Last_Name,
-        Contact: req.body.Contact,
-        Date_of_Birth: req.body.Date_of_Birth,
-        Gender: req.body.Gender,
-        Email: req.body.Email,
-        City: req.body.City,
-        State: req.body.State,
-        Pincode: req.body.Pincode,
-        img: {
-            data: req.file.filename,
-            contentType: 'application/pdf'
-        }
-    }
-
-    candDetailsModel.create(obj, (err, item) => {
-        if (err) {
-            console.log(err);
-        } else {
-            item.save();
-            res.render("success");
-        }
-    });
-});
-
-
-var port = process.env.PORT || '3001'
+var port = process.env.PORT || '3000'
 app.listen(port, err => {
     if (err)
         throw err

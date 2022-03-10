@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Side Bar -->
+    <%- include("./../components/sidebar") %>
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./../components/header") %>
+
+                <div class="container mt-5">
+
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Domain</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Domain %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Society_Name</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Society_Name %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Description</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Description %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Cluster</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Cluster %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Cluster_ED</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Cluster_ED %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Date_of_Registration</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Date_of_Registration %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Status</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Status %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row entrySchema" data-bs-toggle="collapse" href="#spoc" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <div class="entryHead col-md-4">
+                            <h5>SPOC</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="collapse subContainer" id="spoc">
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Name</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.SPOC.Name %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Email</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.SPOC.Email %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Ecode</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.SPOC.Ecode %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Contact</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.SPOC.Contact %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Department</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.SPOC.Department %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row entrySchema" data-bs-toggle="collapse" href="#departmentalCoordinators"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div class="entryHead col-md-4">
+                            <h5>Departmental_Coordinator</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="collapse subContainer" id="departmentalCoordinators">
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Name</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.Departmental_Coordinator.Name %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Email</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.Departmental_Coordinator.Email %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>ECode</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.Departmental_Coordinator.ECode %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Contact</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.Departmental_Coordinator.Contact %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Department</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <%= entry.Departmental_Coordinator.Department %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>SPOC_Activity_Calender</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <a href="#">Download</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div data-bs-toggle="collapse" href="#execCommittee" role="button" aria-expanded="false"
+                        aria-controls="collapseExample" class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Executive Committee</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="collapse subContainer" id="execCommittee">
+                        <div class="row entrySchema" data-bs-toggle="collapse" href="#ecoption1" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <div class="entryHead col-md-4">
+                                <h5>Branch Counselor</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="collapse subContainer" id="ecoption1">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Branch_Counselor.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Branch_Counselor.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Branch_Counselor.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Branch_Counselor.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Branch_Counselor.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-bs-toggle="collapse" href="#ecoption2" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Faculty_Advisory</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="collapse subContainer" id="ecoption2">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Faculty_Advisory.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Faculty_Advisory.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Faculty_Advisory.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Faculty_Advisory.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Faculty_Advisory.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-bs-toggle="collapse" href="#ecoption3" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Chapter_Advisory</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="ecoption3">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Chapter_Advisory.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Chapter_Advisory.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Chapter_Advisory.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Chapter_Advisory.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Chapter_Advisory.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-bs-toggle="collapse" href="#ecoption4" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Other</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="ecoption4">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Other.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Other.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Other.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Other.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Executive_Committee.Other.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-bs-toggle="collapse" href="#studentCommunity" role="button" aria-expanded="false"
+                        aria-controls="collapseExample" class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Student_Committee</h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="collapse subContainer" id="studentCommunity">
+                        <div data-bs-toggle="collapse" href="#scoption1" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Chair</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="scoption1">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Chair.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Chair.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Chair.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Chair.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Chair.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-bs-toggle="collapse" href="#scoption2" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Community_Lead</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="scoption2">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Community_Lead.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Community_Lead.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Community_Lead.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Community_Lead.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Community_Lead.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-bs-toggle="collapse" href="#scoption3" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Vice_Chair</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="scoption3">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Vice_Chair.Name %>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Vice_Chair.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Vice_Chair.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Vice_Chair.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Vice_Chair.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-bs-toggle="collapse" href="#scoption4" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Secretary</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="scoption4">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-bs-toggle="collapse" href="#scoption5" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Treasurer</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="scoption5">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Treasurer.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Treasurer.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Treasurer.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Treasurer.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Treasurer.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-bs-toggle="collapse" href="#scoption6" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Web_Master</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="collapse subContainer" id="scoption6">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Web_Master.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Web_Master.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Web_Master.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Web_Master.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Web_Master.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-bs-toggle="collapse" href="#scoption7" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Student_Ambassador</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse subContainer" id="scoption7">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Student_Ambassador.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Student_Ambassador.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Student_Ambassador.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Student_Ambassador.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Student_Ambassador.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-bs-toggle="collapse" href="#scoption8" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="row entrySchema">
+                            <div class="entryHead col-md-4">
+                                <h5>Other</h5>
+                            </div>
+                            <div class="Entry col-md-8">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-chevron-down " viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="collapse subContainer" id="scoption8">
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Name</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Other.Name %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Other.Email %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>ECode</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Other.ECode %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Contact</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Other.Contact %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row entrySchema">
+                                <div class="entryHead col-md-4">
+                                    <h5>Department</h5>
+                                </div>
+                                <div class="Entry col-md-8">
+                                    <p>
+                                        <%= entry.Student_Committee.Other.Department %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                           
+                    </div>
+                    <!-- <div class="row entrySchema">
+                <div class="entryHead col-md-4">
+                    <h5>Student_Member_List</h5>
+                </div>
+                <div class="Entry col-md-8">
+                    <p>
+                        <a href="#">Download</a>
+                    </p>
+                </div>
+            </div> -->
+                    <div class="row entrySchema">
+                        <div class="entryHead col-md-4">
+                            <h5>Activity_Name </h5>
+                        </div>
+                        <div class="Entry col-md-8">
+                            <p>
+                                <%= entry.Activity_Name %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="/js/bootstrap.bundle.min.js"
+                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                    crossorigin="anonymous"></script>
+                <script src="/js/script.js"></script>
+</body>
+
+</html>
