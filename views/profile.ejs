@@ -12,48 +12,62 @@
 
 <body>
     <!-- Side Bar -->
-    <%- include("./components/sidebar") %> 
+    <%- include("./components/sidebar") %>
 
 
-    <!-- Body -->
-    <div class="bodyContainer">
+        <!-- Body -->
+        <div class="bodyContainer">
 
 
-        <!-- Navbar -->
-        <%- include("./components/header") %> 
+            <!-- Navbar -->
+            <%- include("./components/header") %>
 
 
 
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-5 ps-3 profilePic">
-                    <img class="ms-auto me-auto" src="./images/253852115_369284928277098_6803301368560095943_n.jpg"
-                        alt="" srcset="">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-5 ps-3 profilePic">
+                            <img class="ms-auto me-auto"
+                                src="./images/253852115_369284928277098_6803301368560095943_n.jpg" alt="" srcset="">
+                        </div>
+                        <div class="col-md-7">
+                            <h1 class="mt-3 nameHead">Lakshay Chawla</h1>
+                            <p>Software Dev | Undergraduate Student</p>
+                            <p><a href="mailto:20bcs6900@cuchd.in">20bcs6900@cuchd.in</a></p>
+                        </div>
+                    </div>
+                    <div class="card col-lg-10 mt-3">
+                        <div class="blockquote card-header">
+                            Course Name
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="mb-0">
+                                <p>Bachelor of Engineering in Computer Science (Hons.) with speacialization in
+                                    Artificial
+                                    Intelligencd and Machine Learning</p>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <div class="card col-lg-10 mt-3">
+                        <div class="blockquote card-header">
+                            Course Name
+                        </div>
+                        <%// certificates.forEach(credential=> { %>
+                            <div class="card-body">
+                                <blockquote class="mb-0">
+                                    <p><%=// credential.title %> </p>
+                                </blockquote>
+                            </div>
+                            <%// }) %>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                    <h1 class="mt-3 nameHead">Lakshay Chawla</h1>
-                    <p>Software Dev | Undergraduate Student</p>
-                    <p><a href="mailto:20bcs6900@cuchd.in">20bcs6900@cuchd.in</a></p>
-                </div>
-            </div>
-            <div class="card col-lg-10 mt-3">
-                <div class="blockquote card-header">
-                    Course Name
-                </div>
-                <div class="card-body">
-                    <blockquote class="mb-0">
-                        <p>Bachelor of Engineering in Computer Science (Hons.) with speacialization in Artificial
-                            Intelligencd and Machine Learning</p>
-                    </blockquote>
-                </div>
-            </div>
         </div>
-    </div>
 
-    <script src="/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="/js/script.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
 </body>
 
 </html>

@@ -237,13 +237,13 @@ form * {
   text-align: center;
 }
 
-.profilePic img{
-  /* border-radius: 50%; */
-  width: 200px;
-}
-
 .nameHead{
   font-size: 40px;
+}
+
+.profilePic{
+  height: 200px;
+  width: 200px;
 }
 
 .logIn{

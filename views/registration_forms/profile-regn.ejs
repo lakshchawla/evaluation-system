@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Society Registration</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+    <!-- Side Bar -->
+    <%- include("./../components/sidebar") %>
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./../components/header") %>
+
+
+
+                <div class="container col-lg-12" style="max-width: 730px;">
+
+                    <div class="pageHeading">
+                        <h1>Student Registration</h1>
+                    </div>
+
+                    <form action="/student-registration" method="POST">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" name="full_name" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">UID</label>
+                            <input type="text" class="form-control" name="uid" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+
+                        <label for="exampleInputEmail1" class="form-label">Select Section</label>
+                        <select class="form-select mb-3" name="section" aria-label="Default select example">
+                            <label class="form-label">Section</label>
+                            <option selected>Select Section</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Your profile </label>
+                            <input type="text" class="form-control" name="keyword" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Password </label>
+                            <input type="password" class="form-control" name="pass" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="ms-auto me-auto" style="width: fit-content;">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+</body>
+
+</html>
