@@ -12,21 +12,59 @@
 
 <body>
 
-    <div class="logIn p-4 ms-auto me-auto">
+    <div class="container col-lg-12" style="max-width: 730px;">
+
         <div class="ms-auto me-auto mb-3 fitContent">
             <img src="./images/logo.png" alt="" srcset="">
         </div>
-        <div class="card col-lg-6 col-md-8 ms-auto me-auto text-center">
-            <div class="card-header">
-                Sign In
-            </div>
-            <div class="card-body">
-                <form action="/signup" method="post">
-                    
-                    <button class="btn btn-outline-primary" type="submit">Log In</button>
-                </form>
-            </div>
+        
+        <div class="pageHeading">
+            <h1>Sign-Up</h1>
         </div>
+
+        <form action="/sign-up" method="post">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="name" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Category</label>
+                <select class="form-select" name="category" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="Student">Student</option>
+                    <option value="Class Mentor">Class Mentor</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">UID (for students) or E-Code (for class
+                    mentors)</label>
+                <input type="text" class="form-control" name="uid" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Section</label>
+                <select class="form-select" name="section" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+            </div>
+
+            <div class="ms-auto me-auto" style="width: fit-content;">
+                <button class="btn btn-primary" id="btnSubmit" type="submit">Submit</button>
+            </div>
+        </form>
     </div>
 
     <script src="./js/bootstrap.bundle.min.js"

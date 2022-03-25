@@ -9,8 +9,6 @@ const bodyParser = require("body-parser");
 const req = require("express/lib/request");
 const app = express();
 
-
-
 mongoose.connect(
   "mongodb+srv://lakshay:lakshay@cluster0.as40i.mongodb.net/uies_data",
   {
@@ -18,7 +16,6 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
-
 
 //Midleware
 app.set("view engine", "ejs");
@@ -33,31 +30,31 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 // Schema-----------------------------------------------------
 const userSchema = new mongoose.Schema({
-  uid: String,
+  uid: { type: String },
   category: String,
-  loginSchema:{
+  loginSchema: {
     password: String,
   },
-  profile:{
+  profile: {
+    name: String,
     cumail: String,
     email: String,
     section: String,
-
   },
-  certificateSchema:{
-    title: String,
-    link: String,
-    aprooval: Boolean,
-  },
+  certificateSchema: [
+    {
+      title: String,
+      link: String,
+      aprooval: Boolean,
+    },
+  ],
   verified: Boolean,
 });
 
 // Schema Constructor------------------------------------------
 const users = mongoose.model("users", userSchema);
-
 
 // Passport Js
 app.use(passport.initialize());
@@ -73,9 +70,12 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
+let currUser;
+
 passport.use(
   new localStrategy(function (username, password, done) {
     users.findOne({ uid: username }, function (err, user) {
+      currUser = username;
       if (err) return done(err);
       if (!user) return done(null, false, { message: "Incorrect username." });
 
@@ -105,7 +105,6 @@ function isLoggedOut(req, res, next) {
   res.redirect("/");
 }
 
-
 // ROUTES
 app.get("/", isLoggedIn, (req, res) => {
   // certificate.find({}, (err, certificates) => {
@@ -113,7 +112,11 @@ app.get("/", isLoggedIn, (req, res) => {
   //     certificates: certificates,
   //   });
   // });
-  res.render("profile");
+  users.findOne({ uid: currUser }, (err, user) => {
+    res.render("profile", {
+      user: user,
+    });
+  });
 });
 
 app.get("/login", isLoggedOut, (req, res) => {
@@ -124,6 +127,76 @@ app.get("/login", isLoggedOut, (req, res) => {
 
   res.render("login", response);
 });
+
+app.get("/certificate-registration", (req, res) => {
+  res.render("./registration_forms/certificate");
+});
+
+app.post("/certificate-registration", (req, res) => {
+  users.findOneAndUpdate(
+    { uid: "20bcs6900" },
+    {
+      $push: {
+        certificateSchema: {
+          title: req.body.credentialName,
+          link: req.body.credential,
+        },
+      },
+    },
+    (error, success) => {
+      if (error) {
+        console.log(error);
+      } else {
+        
+      }
+    }
+  );
+});
+
+// users.findOne({uid: "20bcs6900"}, (err, user) => {
+//   const arr = user.certificateSchema;
+//   console.log("Uid found");
+//   arr.push({
+//     title: "Test Book",
+//     link: "test-link",
+//   })
+// })
+
+// users.updateOne({uid: "20bcs6900"}, (err, user) => {
+//   const arr = user.certificateSchema;
+//   console.log("Uid found");
+//   arr.push({
+//     title: "Test Book",
+//     link: "test-link",
+//   })
+// })
+
+// users.update({ uid: "20bcs6900" }, {
+//   user.certificateSchemapush : ({
+//     title: "Test Book",
+//     link: "test-link",
+//   })
+// }, fn);
+
+app.post
+users.findOneAndUpdate(
+  { uid: "20bcs6900" },
+  {
+    $push: {
+      certificateSchema: {
+        title: "Test Book",
+        link: "test-link",
+      },
+    },
+  },
+  (error, success) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(success);
+    }
+  }
+);
 
 app.post(
   "/login",
@@ -138,48 +211,34 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
+// Student Sign up
+app.get("/sign-up", isLoggedOut, (req, res) => {
+  res.render("signup");
+});
 
-// Signing up for admin directly---------------------------------------------------
-app.get("/addAdmin", (req, res) => {
+app.post("/sign-up", (req, res) => {
   bcrypt.genSalt(10, function (err, salt) {
     if (err) return next(err);
     bcrypt.hash("pass", salt, function (err, hash) {
       if (err) return next(err);
 
       const newUser = new users({
-        uid: "admin",
-        loginSchema:{
-          password: hash,
-        },
-      });
-
-      newUser.save();
-    });
-  });
-});
-
-// Student Sign up
-app.get("/sign-up", isLoggedOut, (req, res) => {
-
-});
-
-app.post("/sign-up", (req, res) => {
-  bcrypt.genSalt(10, function (err, salt) {
-    if (err) return next(err);
-    bcrypt.hash(req.body.password, salt, function (err, hash) {
-      if (err) return next(err);
-
-      const newUser = new users({
         uid: req.body.uid,
         category: req.body.category,
-        loginSchema:{
+        loginSchema: {
           password: hash,
+        },
+        profile: {
+          name: req.body.name,
+          section: req.body.section,
         },
       });
 
       newUser.save();
     });
   });
+
+  res.render("success_page");
 });
 
 // Establishing Port Connection
