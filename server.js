@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
   certificateSchema: [
     {
       title: String,
-      link: String,
+      source: String,
       aprooval: Boolean,
     },
   ],
@@ -128,18 +128,22 @@ app.get("/login", isLoggedOut, (req, res) => {
   res.render("login", response);
 });
 
-app.get("/certificate-registration", (req, res) => {
-  res.render("./registration_forms/certificate");
+app.get("/certificate-registration", isLoggedIn, (req, res) => {
+  users.findOne({ uid: currUser }, (err, user) => {
+    res.render("./registration_forms/certificate", {
+      user: user,
+    });
+  });
 });
 
 app.post("/certificate-registration", (req, res) => {
   users.findOneAndUpdate(
-    { uid: "20bcs6900" },
+    { uid: currUser },
     {
       $push: {
         certificateSchema: {
           title: req.body.credentialName,
-          link: req.body.credential,
+          source: req.body.credentialSource,
         },
       },
     },
@@ -147,56 +151,11 @@ app.post("/certificate-registration", (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        
+        res.render("success_page");
       }
     }
   );
 });
-
-// users.findOne({uid: "20bcs6900"}, (err, user) => {
-//   const arr = user.certificateSchema;
-//   console.log("Uid found");
-//   arr.push({
-//     title: "Test Book",
-//     link: "test-link",
-//   })
-// })
-
-// users.updateOne({uid: "20bcs6900"}, (err, user) => {
-//   const arr = user.certificateSchema;
-//   console.log("Uid found");
-//   arr.push({
-//     title: "Test Book",
-//     link: "test-link",
-//   })
-// })
-
-// users.update({ uid: "20bcs6900" }, {
-//   user.certificateSchemapush : ({
-//     title: "Test Book",
-//     link: "test-link",
-//   })
-// }, fn);
-
-app.post
-users.findOneAndUpdate(
-  { uid: "20bcs6900" },
-  {
-    $push: {
-      certificateSchema: {
-        title: "Test Book",
-        link: "test-link",
-      },
-    },
-  },
-  (error, success) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log(success);
-    }
-  }
-);
 
 app.post(
   "/login",

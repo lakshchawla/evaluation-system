@@ -66,7 +66,6 @@ passport.deserializeUser(function (id, done) {
 
 const certificateSchema = new mongoose.Schema({
   title: String,
-  approval: Boolean,
 });
 
 const certificate = mongoose.model("certificate", certificateSchema);

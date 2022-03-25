@@ -68,7 +68,7 @@
                 </svg>
             </a>
             <a class="nav-link" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bell" <svg
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bell"
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-bell" viewBox="0 0 16 16">
                     <path
@@ -94,8 +94,8 @@
                     srcset="">
             </div>
             <div>
-                <p class="profileText">Lakshay Chawla</p>
-                <p class="profileText">Student</p>
+                <p class="profileText"><%= user.profile.name %></p>
+                <p class="profileText"><%= user.category %></p>
             </div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -106,8 +106,7 @@
             </div>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="/">Profile</a></li>
             <li><a class="dropdown-item" href="#">Help</a></li>
             <li>
                 <hr class="dropdown-divider">
