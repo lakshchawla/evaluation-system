@@ -258,3 +258,8 @@ form * {
 .logIn img{
   width: 150px;
 }
+
+.cardLink{
+  text-decoration: none;
+  color: black;
+}

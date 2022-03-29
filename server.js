@@ -178,7 +178,7 @@ app.get("/sign-up", isLoggedOut, (req, res) => {
 app.post("/sign-up", (req, res) => {
   bcrypt.genSalt(10, function (err, salt) {
     if (err) return next(err);
-    bcrypt.hash("pass", salt, function (err, hash) {
+    bcrypt.hash(req.body.password, salt, function (err, hash) {
       if (err) return next(err);
 
       const newUser = new users({
