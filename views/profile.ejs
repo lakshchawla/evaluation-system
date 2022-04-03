@@ -36,7 +36,7 @@
                             <%= user.profile.name %>
                         </h1>
                         <p class="fs-5 col-md-8" style="font-weight: bold;">
-                            <%= user.category %> @ user.profile.course
+                            <%= user.category %>@user.profile.course
                         </p>
                         <p class="fs-5 col-md-8">
                             <%= user.uid.toUpperCase() %> <br>
@@ -55,17 +55,17 @@
 
 
                                 <ul class="icon-list">
-                                    <% user.certificateSchema.reverse() %> 
-                                    <% user.certificateSchema.forEach(element => { %>
-                                        <li>
-                                            <h5>
-                                                <%= element.title %>
-                                            </h5>
-                                            <p class="text-muted">
-                                                - <%= element.source %>
-                                            </p>
-                                        </li>
-                                        <% }); %>
+                                    <% user.certificateSchema.reverse() %>
+                                        <% user.certificateSchema.forEach(element=> { %>
+                                            <li>
+                                                <h5>
+                                                    <%= element.title %>
+                                                </h5>
+                                                <p class="text-muted">
+                                                    - <%= element.source %>
+                                                </p>
+                                            </li>
+                                            <% }); %>
                                 </ul>
                             </div>
                         </div>
