@@ -9,6 +9,9 @@ const bodyParser = require("body-parser");
 const req = require("express/lib/request");
 const app = express();
 
+const users = require("./src/module/userModel");
+
+
 mongoose.connect(
   "mongodb+srv://lakshay:lakshay@cluster0.as40i.mongodb.net/uies_data",
   {
@@ -31,30 +34,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Schema-----------------------------------------------------
-const userSchema = new mongoose.Schema({
-  uid: { type: String },
-  category: String,
-  loginSchema: {
-    password: String,
-  },
-  profile: {
-    name: String,
-    cumail: String,
-    email: String,
-    section: String,
-  },
-  certificateSchema: [
-    {
-      title: String,
-      source: String,
-      aprooval: Boolean,
-    },
-  ],
-  verified: Boolean,
-});
+// const userSchema = new mongoose.Schema({
+//   uid: { type: String },
+//   category: String,
+//   loginSchema: {
+//     password: String,
+//   },
+//   profile: {
+//     name: String,
+//     cumail: String,
+//     email: String,
+//     section: String,
+//   },
+//   certificateSchema: [
+//     {
+//       title: String,
+//       source: String,
+//       aprooval: Boolean,
+//     },
+//   ],
+//   verified: Boolean,
+// });
 
-// Schema Constructor------------------------------------------
-const users = mongoose.model("users", userSchema);
+// // Schema Constructor------------------------------------------
+// const users = mongoose.model("users", userSchema);
 
 // Passport Js
 app.use(passport.initialize());
@@ -118,6 +121,14 @@ app.get("/", isLoggedIn, (req, res) => {
     });
   });
 });
+
+app.get("/mentor-dashboard", isLoggedIn, (req, res) => {
+  users.findOne({ uid: currUser }, (err, user) => {
+    res.render("dashboard", {
+      user: user,
+    });
+  });
+})
 
 app.get("/login", isLoggedOut, (req, res) => {
   const response = {
@@ -204,5 +215,5 @@ app.post("/sign-up", (req, res) => {
 var port = process.env.PORT || "3000";
 app.listen(port, (err) => {
   if (err) throw err;
-  console.log("Server listening on port", port);
+  console.log("Server listening on port ", port);
 });

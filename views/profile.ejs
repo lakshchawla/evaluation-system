@@ -22,7 +22,53 @@
             <!-- Navbar -->
             <%- include("./components/header") %>
 
+                <% if(user.category=="Student" ){ %>
+                    <div class="col-lg-8 mx-auto p-3 py-md-5">
+                        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+                            <img class="rounded-circle profilePic"
+                                src="./images/253852115_369284928277098_6803301368560095943_n.jpg" alt="" srcset="">
 
+                        </header>
+
+                        <main>
+                            <h1>
+                                <%= user.profile.name %>
+                            </h1>
+                            <p class="fs-5 col-md-8" style="font-weight: bold;">
+                                <%= user.category %> @ user.profile.course
+                            </p>
+                            <p class="fs-5 col-md-8">
+                                <%= user.uid.toUpperCase() %> <br>
+                                    Section: <%= user.profile.section.toUpperCase() %> <br>
+                            </p>
+
+                            <div class="mb-5">
+                                <a href="/docs/5.1/examples/" class="btn btn-primary btn-lg px-4">Get in touch</a>
+                            </div>
+
+<<<<<<< HEAD
+                            <hr class="col-3 col-md-2 mb-5">
+
+                            <div class="row g-5">
+                                <div class="col-md-10">
+                                    <h2 class="mb-3">Certificates</h2>
+
+
+                                    <ul class="icon-list">
+                                        <% user.certificateSchema.reverse() %>
+                                            <% user.certificateSchema.forEach(element=> { %>
+                                                <li>
+                                                    <h5>
+                                                        <%= element.title %>
+                                                    </h5>
+                                                    <p class="text-muted">
+                                                        - <%= element.source %>
+                                                    </p>
+                                                </li>
+                                                <% }); %>
+                                    </ul>
+                                </div>
+=======
 
                 <div class="col-lg-8 mx-auto p-3 py-md-5">
                     <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
@@ -67,10 +113,11 @@
                                             </li>
                                             <% }); %>
                                 </ul>
+>>>>>>> 4a90f37929a652ab7630c8458754c41e5efbba27
                             </div>
-                        </div>
-                    </main>
-                </div>
+                        </main>
+                    </div>
+                    <% } %>
 
         </div>
 
