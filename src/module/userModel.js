@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
   verified: Boolean,
 });
 
+
 const users = mongoose.model("users", userSchema);
 
 module.exports = users;

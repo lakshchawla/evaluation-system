@@ -90,6 +90,7 @@ passport.use(
             false,
             { message: "Incorrect password." },
             console.log("Incorrect Password")
+            // res.render("error_page")
           );
 
         return done(null, user);
@@ -160,7 +161,7 @@ app.post("/certificate-registration", (req, res) => {
     },
     (error, success) => {
       if (error) {
-        console.log(error);
+        res.render("error_page");
       } else {
         res.render("success_page");
       }
@@ -171,10 +172,17 @@ app.post("/certificate-registration", (req, res) => {
 app.post(
   "/login",
   passport.authenticate("local", {
-    failureRedirect: "/login?error=true",
+    // failureRedirect: "/login?error=true",
+    failureRedirect: "/error_page",
+    // failureRedirect: res.render("error_page"),
     successRedirect: "/",
+    // successRedirect: res.render("success_page"),
   })
 );
+
+app.get("/error_page", function (req, res) {
+  res.render("success_page");
+});
 
 app.get("/logout", function (req, res) {
   req.logout();
@@ -210,6 +218,8 @@ app.post("/sign-up", (req, res) => {
 
   res.render("success_page");
 });
+
+
 
 // Establishing Port Connection
 var port = process.env.PORT || "3000";
