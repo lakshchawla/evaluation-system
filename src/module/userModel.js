@@ -11,12 +11,23 @@ const userSchema = new mongoose.Schema({
     cumail: String,
     email: String,
     section: String,
+    class: String,
+
+    // New
+    // img:
+    // {
+    //   data: Buffer,
+    //   contentType: String
+    // }
+    img: String,
+
   },
   certificateSchema: [
     {
       title: String,
       source: String,
       aprooval: Boolean,
+
     },
   ],
   verified: Boolean,

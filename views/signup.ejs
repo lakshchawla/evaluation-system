@@ -26,8 +26,8 @@
         <form action="/sign-up" method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Full Name</label>
-                <input type="text" class="form-control" name="name" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
+                <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter Full Name" required>
             </div>
 
             <div class="mb-3">
@@ -36,13 +36,32 @@
                     <option selected>Choose...</option>
                     <option value="Student">Student</option>
                     <option value="Class Mentor">Class Mentor</option>
-                </select>
+                </select required>
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">UID (for students) or E-Code (for class
                     mentors)</label>
-                <input type="text" class="form-control" name="uid" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" class="form-control" name="uid" id="exampleInputEmail1"
+                    placeholder="Enter UID/E-code" aria-describedby="emailHelp" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="text" class="form-control" name="email" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter Email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Cumail</label>
+                <input type="text" class="form-control" name="cumail" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter Cumail" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Class</label>
+                <input type="text" class="form-control" name="class" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter Class" required>
             </div>
 
             <div class="mb-3">
@@ -52,13 +71,13 @@
                     <option value="a">A</option>
                     <option value="b">B</option>
                     <option value="c">C</option>
-                </select>
+                </select required>
             </div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Password</label>
                 <input type="password" class="form-control" name="password" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
+                    aria-describedby="emailHelp" placeholder="Enter your password" required>
             </div>
 
             <br>

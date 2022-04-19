@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searched Users</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/certificate_styles.css">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/drag.css">
+</head>
+
+<body>
+    <!-- Side Bar -->
+    <%- include("./components/sidebar") %>
+
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./components/header") %>
+
+
+
+                <!-- <div class="container col-lg-12" style="max-width: 730px;">
+                </div> -->
+
+                <div class=" container">
+                    <center>
+                        <br>
+                        <%if(noMatch !=undefined){%>
+                            <h3>
+                                <%= noMatch %>
+                            </h3>
+                            <%}%>
+                                <%if(data.length>0){%>
+                                    <center>
+                                        <div style="width:auto; border-style: solid;border-color: black;">
+                                            <table class="table table-border table-hover">
+                                                <thead style="background-color:rgba(254, 0, 0, 0.873)">
+                                                    <tr>
+                                                        <th>
+                                                            S.no
+                                                        </th>
+                                                        <th>
+                                                            Name
+                                                        </th>
+                                                        <th>
+                                                            Uid
+                                                        </th>
+                                                        <th>
+                                                            Class
+                                                        </th>
+                                                        <th>
+                                                            Section
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <%for(var i=0;i< data.length;i++){%>
+                                                        <% if(data[i].category=="Student" ){ %>
+                                                            <tr>
+                                                                <td>
+                                                                    <%=i+1%>
+                                                                </td>
+                                                                <td>
+                                                                    <%=data[i].profile.name%>
+                                                                </td>
+                                                                <td>
+                                                                    <%=data[i].uid%>
+                                                                </td>
+                                                                <td>
+                                                                    <%=data[i].profile.class%>
+                                                                </td>
+                                                                <td>
+                                                                    <%=data[i].profile.section%>
+                                                                </td>
+                                                            </tr>
+                                                            <%}%>
+                                                                <%}%>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </center>
+                                    <%}%>
+                </div>
+
+        </div>
+
+
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+
+
+        <!-- Drag and drop -->
+        <script src="/js/dragscript.js"></script>
+
+</body>
+
+</html>

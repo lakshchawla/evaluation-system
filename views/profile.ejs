@@ -21,11 +21,14 @@
             <%- include("./components/header") %>
 
                 <% if(user.category=="Student" ){ %>
+
+                    <!-- Update image here -->
                     <div class="col-lg-8 mx-auto p-3 py-md-5">
                         <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
                             <img class="rounded-circle profilePic"
                                 src="./images/253852115_369284928277098_6803301368560095943_n.jpg" alt="" srcset="">
-
+                            <!-- <img class="rounded-circle profilePic" src="../public/uploads/<%= user.profile.img %>"
+                                alt="" srcset=""> -->
                         </header>
 
                         <main>
@@ -34,11 +37,13 @@
                             </h1>
                             <p class="fs-5 col-md-8" style="font-weight: bold;">
                                 <%= user.category %>
-                                    <!-- <%= user%> -->
+                                    <%= user.profile %>
+
                             </p>
                             <p class="fs-5 col-md-8">
                                 <b>UID:</b>
                                 <%= user.uid.toUpperCase() %> <br>
+
                                     <b>Section:</b>
                                     <%= user.profile.section.toUpperCase() %> <br>
                             </p>
@@ -47,8 +52,12 @@
                                 <a href="/docs/5.1/examples/" class="btn btn-primary btn-lg px-4">Get in touch</a>
                             </div> -->
                             <div class="mb-5">
-                                <a href="/certificate-registration" class="btn btn-primary btn-lg px-4">Upload
+                                <a href="/certificate-registration" class="btn btn-primary btn-lg px-4"> Upload
                                     Certificate</a>
+                            </div>
+
+                            <div class="mb-5">
+                                <a href="/profile-upload" class="btn btn-primary btn-lg px-4"> Upload Profile image</a>
                             </div>
 
                             <hr class="col-3 col-md-2 mb-5">
