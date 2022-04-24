@@ -26,9 +26,19 @@ const userSchema = new mongoose.Schema({
     {
       title: String,
       source: String,
-      aprooval: Boolean,
-
+      sponsoringUniversity: String,
+      date: Date,
+      grade: String,
+      credentialID: String,
+      credentialLink: String,
     },
+  ],
+
+  skillSchema: [
+    {
+      language: String,
+      efficiency: String,
+    }
   ],
   verified: Boolean,
 });

@@ -8,6 +8,18 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/popup.css">
+
+
+    <link rel="stylesheet"
+        href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet"
+        href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+
+    </style>
 </head>
 
 <body>
@@ -37,15 +49,14 @@
                             </h1>
                             <p class="fs-5 col-md-8" style="font-weight: bold;">
                                 <%= user.category %>
-                                    <%= user.profile %>
 
                             </p>
                             <p class="fs-5 col-md-8">
                                 <b>UID:</b>
                                 <%= user.uid.toUpperCase() %> <br>
-
                                     <b>Section:</b>
-                                    <%= user.profile.section.toUpperCase() %> <br>
+                                    <%= user.profile.class.toUpperCase() %> 
+                                        <%= user.profile.section.toUpperCase() %> <br>
                             </p>
 
                             <!-- <div class="mb-5">
@@ -56,19 +67,92 @@
                                     Certificate</a>
                             </div>
 
-                            <div class="mb-5">
+
+                            <!-- profile pic -->
+                            <!-- <div class="mb-5">
                                 <a href="/profile-upload" class="btn btn-primary btn-lg px-4"> Upload Profile image</a>
-                            </div>
+                            </div> -->
 
                             <hr class="col-3 col-md-2 mb-5">
 
                             <div class="row g-5">
                                 <div class="col-md-10">
-                                    <h2 class="mb-3">Certificates</h2>
+                                    <h2 class="mb-3">Certificates
+                                        <a href="/certificate-registration">
+                                            <span class="material-symbols-outlined">
+                                                add_circle
+                                            </span>
+                                        </a>
+                                    </h2>
 
 
                                     <ul class="icon-list">
+
                                         <% user.certificateSchema.reverse() %>
+                                            <% user.certificateSchema.forEach(element=> { %>
+                                                <li>
+                                                    <h5 id="trigger">
+                                                        <%= element.title %>
+                                                            <div id="overlay">
+                                                                <div id="popup">
+                                                                    <div id="close">X</div>
+                                                                    <h2>
+                                                                        <%= element.title %>
+                                                                    </h2>
+                                                                    <p>
+                                                                        <%= element.source %>
+                                                                    </p>
+                                                                    <% if(element.sponsoringUniversity!="" ){ %>
+                                                                        <p class="heading">Sponsoring University:
+                                                                            <span class="subhead">
+                                                                                <%= element.sponsoringUniversity %>
+                                                                            </span>
+                                                                        <p>
+                                                                            <% } %>
+                                                                                <% if(element.grade!="" ){ %>
+                                                                                    <p class="heading">Grade achieved:
+                                                                                        <span class="subhead">
+                                                                                            <%= element.grade %>
+                                                                                        </span>
+                                                                                    <p>
+                                                                                        <% } %>
+                                                                                            <p class="heading">Complete
+                                                                                                on:
+                                                                                                <span class="subhead">
+                                                                                                    <%= element.date %>
+                                                                                                </span>
+                                                                                            <p>
+
+                                                                                            <p class="heading">
+                                                                                                Credential ID:
+                                                                                                <span class="subhead">
+                                                                                                    <%= element.credentialID
+                                                                                                        %>
+                                                                                                </span>
+                                                                                            <p>
+                                                                                            <p class="heading">
+                                                                                                Credential Link:
+                                                                                                <span class="subhead">
+                                                                                                    <%= element.credentialLink
+                                                                                                        %>
+                                                                                                </span>
+                                                                                            <p>
+                                                                </div>
+                                                                <!-- sponsoringUniversity: String,
+                                                                date: Date,
+                                                                grade: String,
+                                                                credentialID: String,
+                                                                credentialLink: String, -->
+                                                            </div>
+
+                                                    </h5>
+                                                    <p class="text-muted">
+                                                        - <%= element.source %>
+                                                    </p>
+                                                </li>
+                                                <% }); %>
+
+                                                    <!-- <% user.certificateSchema.reverse() %>
                                             <% user.certificateSchema.forEach(element=> { %>
                                                 <li>
                                                     <h5>
@@ -78,59 +162,52 @@
                                                         - <%= element.source %>
                                                     </p>
                                                 </li>
+                                                <% }); %> -->
+                                    </ul>
+                                </div>
+
+
+
+                                <div class="col-md-10">
+                                    <h2 class="mb-3">Skills
+                                        <a href="/skills-registration">
+                                            <span class="material-symbols-outlined">
+                                                add_circle
+                                            </span>
+                                        </a>
+                                    </h2>
+
+                                    <ul class="icon-list">
+                                        <% user.skillSchema.reverse() %>
+                                            <% user.skillSchema.forEach(element=> { %>
+                                                <li>
+                                                    <h5>
+                                                        <%= element.language %>
+                                                            <!-- <span>
+                                                            <p class="text-muted">
+                                                                <%= element.efficiency %>
+                                                            </p>
+                                                        </span> -->
+
+                                                    </h5>
+                                                    <p class="text-muted">
+                                                        <%for(var i=0;i< element.efficiency;i++){%>
+                                                            <span class="material-symbols-outlined">
+                                                                star
+                                                            </span>
+                                                            <%}%>
+                                                    </p>
+
+                                                </li>
                                                 <% }); %>
                                     </ul>
                                 </div>
+
+                            </div>
+                            <hr class="col-3 col-md-2 mb-5">
+
                         </main>
 
-                        <!-- <div class="col-lg-8 mx-auto p-3 py-md-5">
-                                    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-                                        <img class="rounded-circle profilePic"
-                                            src="./images/253852115_369284928277098_6803301368560095943_n.jpg" alt=""
-                                            srcset="">
-
-                                    </header> -->
-
-                        <!-- <main>
-                                        <h1>
-                                            <%= user.profile.name %>
-                                        </h1>
-                                        <p class="fs-5 col-md-8" style="font-weight: bold;">
-                                            <%= user.category %>@user.profile.course
-                                        </p>
-                                        <p class="fs-5 col-md-8">
-                                            <%= user.uid.toUpperCase() %> <br>
-                                                Section: <%= user.profile.section.toUpperCase() %> <br>
-                                        </p>
-
-                                        <div class="mb-5">
-                                            <a href="/docs/5.1/examples/" class="btn btn-primary btn-lg px-4">Get in
-                                                touch</a>
-                                        </div>
-
-                                        <hr class="col-3 col-md-2 mb-5">
-
-                                        <div class="row g-5">
-                                            <div class="col-md-10">
-                                                <h2 class="mb-3">Certificates</h2>
-
-
-                                                <ul class="icon-list">
-                                                    <% user.certificateSchema.reverse() %>
-                                                        <% user.certificateSchema.forEach(element=> { %>
-                                                            <li>
-                                                                <h5>
-                                                                    <%= element.title %>
-                                                                </h5>
-                                                                <p class="text-muted">
-                                                                    - <%= element.source %>
-                                                                </p>
-                                                            </li>
-                                                            <% }); %>
-                                                </ul>
-                                                >>>>>>> 4a90f37929a652ab7630c8458754c41e5efbba27
-                                            </div>
-                                    </main> -->
                         <!-- </div>
                             <% } %> -->
 
@@ -142,6 +219,27 @@
                         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
                         crossorigin="anonymous"></script>
                     <script src="/js/script.js"></script>
+
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+                    <script>
+
+                        var overlay = document.getElementById("overlay");
+                        var popup = document.getElementById("popup");
+                        var trigger = document.getElementById("trigger");
+
+                        // Close Popup Event
+                        close.onclick = function () {
+                            overlay.style.display = 'none';
+                            popup.style.display = 'none';
+                        };
+                        // Show Overlay and Popup
+                        trigger.onclick = function () {
+                            overlay.style.display = 'block';
+                            popup.style.display = 'block';
+                        };
+                    </script>
 </body>
 
 </html>

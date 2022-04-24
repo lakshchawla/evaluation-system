@@ -1,4 +1,4 @@
-// Dependancies---------------------------------------------
+// Dependencies---------------------------------------------
 const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
@@ -111,11 +111,6 @@ function isLoggedOut(req, res, next) {
 
 // ROUTES
 app.get("/", isLoggedIn, (req, res) => {
-  // certificate.find({}, (err, certificates) => {
-  //   res.render("profile", {
-  //     certificates: certificates,
-  //   });
-  // });
   users.findOne({ uid: currUser }, (err, user) => {
     res.render("profile", {
       user: user,
@@ -141,7 +136,36 @@ app.get("/login", isLoggedOut, (req, res) => {
 });
 
 
+// Skills
+app.get("/skills-registration", isLoggedIn, (req, res) => {
+  users.findOne({ uid: currUser }, (err, user) => {
+    res.render("./registration_forms/skills", {
+      user: user,
+    });
+  });
+});
 
+app.post("/skills-registration", (req, res) => {
+  users.findOneAndUpdate(
+    { uid: currUser },
+    {
+
+      $push: {
+        skillSchema: {
+          language: req.body.language,
+          efficiency: req.body.rate,
+        },
+      },
+    },
+    (error, success) => {
+      if (error) {
+        res.render("error_page");
+      } else {
+        res.render("success_page");
+      }
+    }
+  );
+});
 
 // Certificate
 app.get("/certificate-registration", isLoggedIn, (req, res) => {
@@ -158,8 +182,13 @@ app.post("/certificate-registration", (req, res) => {
     {
       $push: {
         certificateSchema: {
-          title: req.body.credentialName,
-          source: req.body.credentialSource,
+          title: req.body.courseName,
+          source: req.body.platformName,
+          sponsoringUniversity: req.body.organizationName,
+          date: req.body.completionDate,
+          grade: req.body.grade,
+          credentialID: req.body.id,
+          credentialLink: req.body.link,
         },
       },
     },
