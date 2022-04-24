@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Profile</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/certificate_styles.css">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/drag.css">
+
+    <style>
+        .drop-zone {
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Side Bar -->
+    <%- include("./../components/sidebar") %>
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./../components/header") %>
+
+                <div class="container col-lg-12" style="max-width: 730px;">
+
+                    <div class="pageHeading">
+                        <h1>Upload Profile</h1>
+                    </div>
+
+                    <form action="/profile-upload" method="POST" enctype="multipart/form-data">
+
+                        <!-- upload profile-->
+                        <div class="input-box">
+                            <div class="drop-zone">
+                                <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                                <input type="file" id="imgage" name="image" class="drop-zone__input" accept=".jpg"
+                                    value="" required>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="ms-auto me-auto" style="width: fit-content;">
+                            <button class="btn btn-danger" type="submit">Submit</button>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+
+        </div>
+
+
+
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+
+
+        <!-- Drag and drop -->
+        <script src="/js/dragscript.js"></script>
+
+</body>
+
+</html>

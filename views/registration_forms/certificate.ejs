@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Certificate registration</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/certificate_styles.css">
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/drag.css">
-
 </head>
 
 <body>
@@ -31,18 +30,6 @@
                     </div>
 
                     <form action="/certificate-registration" method="POST">
-                        <!-- <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Course name</label>
-                            <input type="text" class="form-control" name="credentialName" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Course provider</label>
-                            <input type="text" class="form-control" name="credentialSource" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
-                        </div> -->
-
                         <!-- Course name -->
                         <div class="input-box mb-3">
                             <span class="details">Course/Program: <span style="color:red">*</span> </span>
@@ -52,7 +39,7 @@
 
                         <!-- Platform name -->
                         <div class="input-box mb-3">
-                            <span class="details">Platfrom: <span style="color:red">*</span> </span>
+                            <span class="details">Platform: <span style="color:red">*</span> </span>
                             <input type="text" class="form-control" name="platformName"
                                 placeholder="Enter platform name" required>
                         </div>
@@ -68,7 +55,7 @@
                         <!-- Date of completion  -->
                         <div class="input-box mb-3">
                             <span class="details">Date of completion: <span style="color:red">*</span> </span>
-                            <input type="date" class="form-control" name="completionDate" required>
+                            <input type="date" class="form-control" name="completionDate"  max=Date() required>
                         </div>
 
                         <!-- Completion date  -->
@@ -96,14 +83,14 @@
 
 
                         <!-- upload certificate -->
-                        <div class="input-box">
-                            <span class="details">Cerdential Link: <span class="req">*</span></span>
+                        <!-- <div class="input-box">
+                            <span class="details">Upload Certificate: <span class="req">*</span></span>
                             <div class="drop-zone">
                                 <span class="drop-zone__prompt">Drop file here or click to upload</span>
                                 <input type="file" id="cerificate" name="cerificateFile" class="drop-zone__input"
                                     accept=".pdf,.jpg,.png" required>
                             </div>
-                        </div>
+                        </div> -->
 
                         <br>
 

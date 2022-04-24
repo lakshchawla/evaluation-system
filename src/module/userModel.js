@@ -11,16 +11,38 @@ const userSchema = new mongoose.Schema({
     cumail: String,
     email: String,
     section: String,
+    class: String,
+
+    // New
+    // img:
+    // {
+    //   data: Buffer,
+    //   contentType: String
+    // }
+    img: String,
+
   },
   certificateSchema: [
     {
       title: String,
       source: String,
-      aprooval: Boolean,
+      sponsoringUniversity: String,
+      date: Date,
+      grade: String,
+      credentialID: String,
+      credentialLink: String,
     },
+  ],
+
+  skillSchema: [
+    {
+      language: String,
+      efficiency: String,
+    }
   ],
   verified: Boolean,
 });
+
 
 const users = mongoose.model("users", userSchema);
 
