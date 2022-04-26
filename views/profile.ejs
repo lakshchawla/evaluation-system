@@ -32,6 +32,8 @@
             <!-- Navbar -->
             <%- include("./components/header") %>
 
+
+                <!-- IF CATEGORY == STUDENT -->
                 <% if(user.category=="Student" ){ %>
 
                     <!-- Update image here -->
@@ -55,21 +57,32 @@
                                 <b>UID:</b>
                                 <%= user.uid.toUpperCase() %> <br>
                                     <b>Section:</b>
-                                    <%= user.profile.class.toUpperCase() %> 
+                                    <%= user.profile.class.toUpperCase() %>
                                         <%= user.profile.section.toUpperCase() %> <br>
                             </p>
 
                             <!-- <div class="mb-5">
                                 <a href="/docs/5.1/examples/" class="btn btn-primary btn-lg px-4">Get in touch</a>
                             </div> -->
-                            <div class="mb-5">
-                                <a href="/certificate-registration" class="btn btn-primary btn-lg px-4"> Upload
-                                    Certificate</a>
+
+                            <!-- Button -->
+                            <!-- <div class="mb-3">
+                                <a href="/certificate-registration" class="btn btn-primary btn-lg px-3"> Upload
+                                    Certificates</a>
                             </div>
+                            <div class="mb-3">
+                                <a href="/achievements-registration" class="btn btn-primary btn-lg px-3"> Upload
+                                    Achievements</a>
+                            </div>
+                            <div class="mb-3">
+                                <a href="/skills-registration" class="btn btn-primary btn-lg px-3"> Upload
+                                    Skills</a>
+                            </div> -->
 
 
                             <hr class="col-3 col-md-2 mb-5">
 
+                            <!-- Certification -->
                             <div class="row g-5">
                                 <div class="col-md-10">
                                     <h2 class="mb-3">Certificates
@@ -133,11 +146,6 @@
                                                                                                 </span>
                                                                                             <p>
                                                                 </div>
-                                                                <!-- sponsoringUniversity: String,
-                                                                date: Date,
-                                                                grade: String,
-                                                                credentialID: String,
-                                                                credentialLink: String, -->
                                                             </div>
 
                                                     </h5>
@@ -162,7 +170,43 @@
                                 </div>
 
 
+                                <div class="col-md-10">
+                                    <h2 class="mb-3">Achievements
+                                        <a href="/achievements-registration">
+                                            <span class="material-symbols-outlined">
+                                                add_circle
+                                            </span>
+                                        </a>
+                                    </h2>
 
+                                    <ul class="icon-list">
+                                        <% user.achievementSchema.reverse() %>
+                                            <% user.achievementSchema.forEach(element=> { %>
+                                                <li>
+                                                    <h5>
+                                                        <%= element.title %>
+                                                            <br>
+                                                            <br>
+                                                            <% if(element.rank!="" ){ %>
+                                                                <p class="text-muted subhead">
+                                                                    Rank secured : <%= element.rank %>
+                                                                </p>
+                                                                <% } %>
+
+                                                                    <p class="text-muted subhead">
+                                                                        Description : <%= element.description %>
+                                                                    </p>
+
+
+                                                    </h5>
+
+                                                </li>
+                                                <% }); %>
+                                    </ul>
+                                </div>
+
+
+                                <!-- Skills -->
                                 <div class="col-md-10">
                                     <h2 class="mb-3">Skills
                                         <a href="/skills-registration">
@@ -178,12 +222,6 @@
                                                 <li>
                                                     <h5>
                                                         <%= element.language %>
-                                                            <!-- <span>
-                                                            <p class="text-muted">
-                                                                <%= element.efficiency %>
-                                                            </p>
-                                                        </span> -->
-
                                                     </h5>
                                                     <p class="text-muted">
                                                         <%for(var i=0;i< element.efficiency;i++){%>
@@ -203,38 +241,81 @@
 
                         </main>
 
-                        <!-- </div>
-                            <% } %> -->
-
                     </div>
+                    <% } %>
 
 
 
-                    <script src="/js/bootstrap.bundle.min.js"
-                        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                        crossorigin="anonymous"></script>
-                    <script src="/js/script.js"></script>
 
 
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+                        <!-- IF CATEGORY == Class mentor -->
+                        <% if(user.category=="Class Mentor" ){ %>
+                            <div class="col-lg-8 mx-auto p-3 py-md-5">
 
-                    <script>
+                                <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+                                    <img class="rounded-circle profilePic"
+                                        src="./images/253852115_369284928277098_6803301368560095943_n.jpg" alt=""
+                                        srcset="">
+                                    <!-- <img class="rounded-circle profilePic" src="../public/uploads/<%= user.profile.img %>"
+                                        alt="" srcset=""> -->
+                                </header>
 
-                        var overlay = document.getElementById("overlay");
-                        var popup = document.getElementById("popup");
-                        var trigger = document.getElementById("trigger");
 
-                        // Close Popup Event
-                        close.onclick = function () {
-                            overlay.style.display = 'none';
-                            popup.style.display = 'none';
-                        };
-                        // Show Overlay and Popup
-                        trigger.onclick = function () {
-                            overlay.style.display = 'block';
-                            popup.style.display = 'block';
-                        };
-                    </script>
+
+                                <main>
+                                    <h1>
+                                        <%= user.profile.name %>
+                                    </h1>
+                                    <p class="fs-5 col-md-8" style="font-weight: bold;">
+                                        <%= user.category %>
+
+                                    </p>
+                                    <p class="fs-5 col-md-8">
+                                        <b>UID:</b>
+                                        <%= user.uid.toUpperCase() %> <br>
+                                            <b>Section:</b>
+                                            <%= user.profile.class.toUpperCase() %>
+                                                <%= user.profile.section.toUpperCase() %> <br>
+                                    </p>
+
+                                    <hr class="col-3 col-md-2 mb-5">
+
+
+                                </main>
+
+                            </div>
+                            <% } %>
+
+
+        </div>
+
+
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+        <script>
+
+            var overlay = document.getElementById("overlay");
+            var popup = document.getElementById("popup");
+            var trigger = document.getElementById("trigger");
+
+            // Close Popup Event
+            close.onclick = function () {
+                overlay.style.display = 'none';
+                popup.style.display = 'none';
+            };
+            // Show Overlay and Popup
+            trigger.onclick = function () {
+                overlay.style.display = 'block';
+                popup.style.display = 'block';
+            };
+        </script>
 </body>
 
 </html>

@@ -40,6 +40,14 @@ const userSchema = new mongoose.Schema({
       efficiency: String,
     }
   ],
+
+  achievementSchema: [
+    {
+      title: String,
+      description: String,
+      rank: String,
+    }
+  ],
   verified: Boolean,
 });
 
