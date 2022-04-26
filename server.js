@@ -118,9 +118,12 @@ app.get("/", isLoggedIn, (req, res) => {
   });
 });
 
+
+
+// Mentor dashboard 
 app.get("/mentor-dashboard", isLoggedIn, (req, res) => {
   users.findOne({ uid: currUser }, (err, user) => {
-    res.render("dashboard", {
+    res.render("./teachersview/dashboard", {
       user: user,
     });
   });
@@ -154,6 +157,38 @@ app.post("/skills-registration", (req, res) => {
         skillSchema: {
           language: req.body.language,
           efficiency: req.body.rate,
+        },
+      },
+    },
+    (error, success) => {
+      if (error) {
+        res.render("error_page");
+      } else {
+        res.render("success_page");
+      }
+    }
+  );
+});
+
+// Achievements
+app.get("/achievements-registration", isLoggedIn, (req, res) => {
+  users.findOne({ uid: currUser }, (err, user) => {
+    res.render("./registration_forms/achievements", {
+      user: user,
+    });
+  });
+});
+
+app.post("/achievements-registration", (req, res) => {
+  users.findOneAndUpdate(
+    { uid: currUser },
+    {
+
+      $push: {
+        achievementSchema: {
+          title: req.body.title,
+          description: req.body.description,
+          rank: req.body.rank,
         },
       },
     },

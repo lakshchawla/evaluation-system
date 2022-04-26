@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills</title>
+    <title>Achievements</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/certificate_styles.css">
 
@@ -26,23 +26,30 @@
                 <div class="container col-lg-12" style="max-width: 730px;">
 
                     <div class="pageHeading">
-                        <h1>Add Your Skills</h1>
+                        <h1>Add Your Achievements</h1>
                     </div>
 
-                    <form action="/skills-registration" method="POST">
-                        <!-- skill name -->
+                    <form action="/achievements-registration" method="POST">
+                        <!-- Achievement name -->
                         <div class="input-box mb-3">
-                            <span class="details">Language You know: <span style="color:red">*</span> </span>
-                            <input type="text" class="form-control" name="language" placeholder="Enter Language"
+                            <span class="details">Achievement: <span style="color:red">*</span> </span>
+                            <input type="text" class="form-control" name="title" placeholder="Enter Your Achievement"
                                 required>
                         </div>
 
 
                         <div class="input-box mb-3">
-                            <span class="details">Rate your efficiency (From scale of 1 to 5): <span
-                                    style="color:red">*</span> </span>
-                            <input type="number" class="form-control" name="rate" min="1" max="5"
-                                placeholder="Rate your efficiency (From scale of 1 to 5)" required>
+                            <span class="details">Description: <span style="color:red">*</span> </span>
+                            <textarea class="form-control" id="textAreaExample" rows="4"
+                                placeholder="Describe your Achievement" name="description"></textarea>
+                            <!-- <input type="text" class="form-control" name="description"
+                                placeholder="Description of your Achievement" id="textAreaExample" required> -->
+                        </div>
+
+                        <div class="input-box mb-3">
+                            <span class="details">Rank or position secured: </span>
+                            <input type="text" class="form-control" name="rank"
+                                placeholder="Enter the rank or position of your Achievement (Optional) ">
                         </div>
 
 
