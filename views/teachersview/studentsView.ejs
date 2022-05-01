@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Side Bar -->
+    <%- include("./../components/sidebar") %>
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./../components/header") %>
+
+                <div class="Dashboard">
+
+                    <div class="row">
+                    <% students.forEach(student=> { %>
+
+
+                        <div class="card mt-4 ms-4 bg-li col-sm-3">
+                            <a class="cardLink" href="">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item ms-auto me-auto">
+                                        <img src="./../images/253852115_369284928277098_6803301368560095943_n.jpg"
+                                            style="height: 200px; width: 200px;" class="card-img-top ms-auto me-auto"
+                                            alt="...">
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h5 class="card-title mt-2 h3">
+                                            <%= student.profile.name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%= student.uid %>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </a>
+                        </div>
+
+                        <% }) %>
+                    </div>
+
+                </div>
+
+        </div>
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+</body>
+
+</html>

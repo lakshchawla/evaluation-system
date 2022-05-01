@@ -11,7 +11,6 @@ const app = express();
 
 const users = require("./src/module/userModel");
 
-
 mongoose.connect(
   "mongodb+srv://lakshay:lakshay@cluster0.as40i.mongodb.net/uies_data",
   {
@@ -118,16 +117,33 @@ app.get("/", isLoggedIn, (req, res) => {
   });
 });
 
+var teacher;
 
-
-// Mentor dashboard 
+// Mentor dashboard
 app.get("/mentor-dashboard", isLoggedIn, (req, res) => {
   users.findOne({ uid: currUser }, (err, user) => {
     res.render("./teachersview/dashboard", {
       user: user,
     });
+    teacher = user;
   });
-})
+});
+
+
+
+app.get("/mentor-dashboard/view-students", isLoggedIn, (req, res) => {
+  users.find(
+    {
+      category: "Student",
+    },
+    (err, students) => {
+      res.render("./teachersview/studentsView", {
+        user: teacher,
+        students: students,
+      });
+    }
+  );
+});
 
 app.get("/login", isLoggedOut, (req, res) => {
   const response = {
@@ -137,7 +153,6 @@ app.get("/login", isLoggedOut, (req, res) => {
 
   res.render("login", response);
 });
-
 
 // Skills
 app.get("/skills-registration", isLoggedIn, (req, res) => {
@@ -152,7 +167,6 @@ app.post("/skills-registration", (req, res) => {
   users.findOneAndUpdate(
     { uid: currUser },
     {
-
       $push: {
         skillSchema: {
           language: req.body.language,
@@ -183,7 +197,6 @@ app.post("/achievements-registration", (req, res) => {
   users.findOneAndUpdate(
     { uid: currUser },
     {
-
       $push: {
         achievementSchema: {
           title: req.body.title,
@@ -289,49 +302,33 @@ app.post("/sign-up", (req, res) => {
   res.render("success_page");
 });
 
-
-
 // Establishing Port Connection
-var port = process.env.PORT || "3000";
+var port = process.env.PORT || "8000";
 app.listen(port, (err) => {
   if (err) throw err;
   console.log("Server listening on port ", port);
 });
 
-
-
-
-
-
-
-
-
-
-
-
 // Profile iMAGE
 
-var fs = require('fs');
-var path = require('path');
-require('dotenv/config');
-
+var fs = require("fs");
+var path = require("path");
+require("dotenv/config");
 
 // Step 5 - set up multer for storing uploaded files
 
-var multer = require('multer');
+var multer = require("multer");
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './public/uploads')
+    cb(null, "./public/uploads");
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname)
-  }
+    cb(null, Date.now() + "-" + file.originalname);
+  },
 });
 var upload = multer({ storage: storage });
 
-var imgModel = require('./src/module/userModel');
-
-
+var imgModel = require("./src/module/userModel");
 
 app.get("/profile-upload", isLoggedIn, (req, res) => {
   users.findOne({ uid: currUser }, (err, user) => {
@@ -341,14 +338,13 @@ app.get("/profile-upload", isLoggedIn, (req, res) => {
   });
 });
 
-app.post("/profile-upload", upload.single('image'), (req, res) => {
-
+app.post("/profile-upload", upload.single("image"), (req, res) => {
   console.log(req.file);
   users.findOneAndUpdate(
     { uid: currUser },
     {
       $push: {
-        img: req.file.filename
+        img: req.file.filename,
       },
     },
     (error, success) => {
@@ -360,10 +356,6 @@ app.post("/profile-upload", upload.single('image'), (req, res) => {
     }
   );
 });
-
-
-
-
 
 // Profile image
 // app.get("/profile-upload", isLoggedIn, (req, res) => {
@@ -391,12 +383,6 @@ app.post("/profile-upload", upload.single('image'), (req, res) => {
 //       }
 //   });
 // });
-
-
-
-
-
-
 
 // gFg
 // app.get('/profile-upload', (req, res) => {
@@ -443,10 +429,8 @@ app.post("/profile-upload", upload.single('image'), (req, res) => {
 //   });
 // });
 
-
-
-// Search 
-app.get('/search', (req, res, next) => {
+// Search
+app.get("/search", (req, res, next) => {
   const searchBar = req.query.search;
 
   // users.find({ "name": { $regex: searchBar, $options: '$i' } })
@@ -497,32 +481,27 @@ app.get('/search', (req, res, next) => {
   //   }
   // })
 
-
-
   function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-  };
-
+  }
 
   try {
-    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    var noMatch
+    const regex = new RegExp(escapeRegex(req.query.search), "gi");
+    var noMatch;
 
     if (req.query.search) {
       users.find({ $or: [{ name: regex }, { uid: regex }] }, (err, data) => {
         // users.find({ $or: [{ name: { '$regex': req.query.search } }, { uid: { '$regex': req.query.search } }] }, (err, data) => {
         if (err) {
           console.log(err);
-          res.render("error_page")
-        }
-        else {
+          res.render("error_page");
+        } else {
           if (data.length < 1) {
             noMatch = "No such student found, Please try again";
           }
-          res.render('searchProfile', { data: data, noMatch: noMatch });
+          res.render("searchProfile", { data: data, noMatch: noMatch });
         }
-
-      })
+      });
     }
     users.find({}, function (err, all) {
       if (err) {
@@ -531,12 +510,8 @@ app.get('/search', (req, res, next) => {
         res.render("searchProfile", { all: all, noMatch: noMatch });
       }
     });
-
   } catch (error) {
     console.log(error);
-    res.render("error_page")
+    res.render("error_page");
   }
 });
-
-
-
