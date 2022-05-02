@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard/Student's Detail</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/popup.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet"
+        href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .card-link {
+            padding: 10px;
+            border: 1px dashed black;
+            border-radius: 10px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .certificateName {
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .certificateName:hover {
+            color: rgb(0, 128, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Side Bar -->
+    <%- include("./../components/sidebar") %>
+
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./../components/header") %>
+                <div class="col-lg-8 mx-auto p-3 py-md-5">
+
+                    <div class="Dashboard">
+                        <!-- <center>
+                            <div class="mb-3">
+                                <a href="/mentor-dashboard/view-students" class="btn btn-primary btn-lg px-3">
+                                    View Students</a>
+                            </div>
+                        </center> -->
+
+                        <h1>
+                            <%= student.profile.name %>
+                        </h1>
+                        <p class="fs-5 col-md-8" style="font-weight: bold;">
+                            <%= student.category %>
+
+                        </p>
+                        <p class="fs-5 col-md-8">
+                            <b>UID:</b>
+                            <%= student.uid.toUpperCase() %> <br>
+                                <b>Section:</b>
+                                <%= student.profile.class.toUpperCase() %>
+                                    <%= student.profile.section.toUpperCase() %> <br>
+                        </p>
+
+                        <!-- View Grades -->
+                        <div class="mb-3 ">
+                            <button id="viewButton" onclick="viewGrades()" class="btn btn-primary btn-lg px-3">
+                                View Grades <i class="fa fa-mouse-pointer" style="color:white;padding:3px"></i>
+                            </button>
+
+                            <div class="card-link" id="grades" style="display: none">
+
+                                <% if(student.gradeSchema.feedback=="" ){ %>
+                                    <center>
+                                        <H4>!! Grades are not uploaded !!</H4>
+                                    </center>
+                                    <% } %>
+
+                                        <% if(student.gradeSchema.feedback!="" ){ %>
+                                            <center>
+                                                <H1 style="padding:20px"><u>Grades Board</u></H1>
+                                            </center>
+                                            <H4> <i class="fa fa-thumbs-up" style="font-size:18px ;padding:4px"></i>
+                                                Certification Grade:
+                                                <%= student.gradeSchema.certificatesGrade.toUpperCase()%>
+                                            </H4>
+                                            <h4><i class="fa fa-thumbs-up"
+                                                    style="font-size:18px ;padding:4px"></i>Skills Grade:
+                                                <%= student.gradeSchema.skillsGrade.toUpperCase()%>
+                                            </h4>
+                                            <h4> <i class="fa fa-thumbs-up"
+                                                    style="font-size:18px ;padding:4px"></i>Achievements Grade:
+                                                <%= student.gradeSchema.achievementsGrade.toUpperCase()%>
+                                            </H4>
+                                            <br>
+                                            <H4><i class="fa fa-mortar-board"
+                                                    style="font-size:18px ;padding:4px"></i>Feedback:<br></H4>
+                                            <p style="margin-left: 30px;">
+                                                > <%= student.gradeSchema.feedback%>
+                                            </p>
+                                            <% } %>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <a href="/grade-registration/<%= student._id %>" class="btn btn-primary btn-lg px-3">
+                                Grade student</a>
+                        </div>
+                        <div class="mb-3">
+                            <a href="/mentor-dashboard" class="btn btn-primary btn-lg px-3">
+                                Go to Dashboard</a>
+                        </div>
+
+                        <br>
+
+                        <hr class="col-3 col-md-2 mb-5">
+
+                        <!-- Certification -->
+                        <div class="row g-5">
+                            <div class="col-md-10">
+                                <h2 class="mb-3">Certificates</h2>
+
+
+                                <ul class="icon-list">
+
+                                    <% student.certificateSchema.reverse() %>
+                                        <% student.certificateSchema.forEach(element=> { %>
+                                            <li>
+                                                <h5>
+                                                    <%= element.title %>
+                                                        <span id="viewCertificateButton" class="certificateName"
+                                                            style="cursor: pointer;" onclick="viewCertificate()">
+                                                            (Show Details)
+                                                        </span>
+                                                </h5>
+
+
+                                                <p class="text-muted">
+                                                    - <%= element.source %>
+                                                </p>
+
+                                                <div class="card-link" id="certificates" style="display: none">
+                                                    <h2>
+                                                        <%= element.title %>
+                                                    </h2>
+                                                    <p>
+                                                        <%= element.source %>
+                                                    </p>
+                                                    <% if(element.sponsoringUniversity!="" ){ %>
+                                                        <p class="heading"><b>Sponsoring
+                                                                University: </b>
+                                                            <span class="subhead">
+                                                                <%= element.sponsoringUniversity %>
+                                                            </span>
+                                                        <p>
+                                                            <% } %>
+                                                                <% if(element.grade!="" ){ %>
+                                                                    <p class="heading"> <b>Grade
+                                                                            achieved:</b>
+                                                                        <span class="subhead">
+                                                                            <%= element.grade %>
+                                                                        </span>
+                                                                    <p>
+                                                                        <% } %>
+                                                                            <p class="heading">
+                                                                                <b>Complete
+                                                                                    on:</b>
+                                                                                <span class="subhead">
+                                                                                    <%= element.date %>
+                                                                                </span>
+                                                                            <p>
+
+                                                                            <p class="heading">
+                                                                                <b> Credential
+                                                                                    ID:</b>
+                                                                                <span class="subhead">
+                                                                                    <%= element.credentialID %>
+                                                                                </span>
+                                                                            <p>
+                                                                            <p class="heading">
+                                                                                <b>Credential
+                                                                                    Link:</b>
+                                                                                <span class="subhead">
+                                                                                    <a href="<%= element.credentialLink %>"
+                                                                                        target="_blank">
+                                                                                        <%= element.credentialLink %>
+                                                                                    </a>
+
+                                                                                </span>
+                                                </div>
+                                            </li>
+                                            <% }); %>
+                                </ul>
+                            </div>
+
+
+                            <div class="col-md-10">
+                                <h2 class="mb-3">Achievements</h2>
+
+                                <ul class="icon-list">
+                                    <% student.achievementSchema.reverse() %>
+                                        <% student.achievementSchema.forEach(element=> { %>
+                                            <li>
+                                                <h5>
+                                                    <%= element.title %>
+                                                        <br>
+                                                        <br>
+                                                        <% if(element.rank!="" ){ %>
+                                                            <p class="text-muted subhead">
+                                                                Rank secured : <%= element.rank %>
+                                                            </p>
+                                                            <% } %>
+
+                                                                <p class="text-muted subhead">
+                                                                    Description : <%= element.description %>
+                                                                </p>
+
+
+                                                </h5>
+
+                                            </li>
+                                            <% }); %>
+                                </ul>
+                            </div>
+
+
+                            <!-- Skills -->
+                            <div class="col-md-10">
+                                <h2 class="mb-3">Skills</h2>
+
+                                <ul class="icon-list">
+                                    <% student.skillSchema.reverse() %>
+                                        <% student.skillSchema.forEach(element=> { %>
+                                            <li>
+                                                <h5>
+                                                    <%= element.language %>
+                                                </h5>
+                                                <p class="text-muted">
+                                                    <%for(var i=0;i< element.efficiency;i++){%>
+                                                        <span class="material-symbols-outlined">
+                                                            star
+                                                        </span>
+                                                        <%}%>
+                                                </p>
+
+                                            </li>
+                                            <% }); %>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <hr class="col-3 col-md-2 mb-5">
+
+                    </div>
+
+                </div>
+        </div>
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+        <script>
+            function viewGrades() {
+                // get the clock
+                var viewingElement = document.getElementById('grades');
+
+                // get the current value of the clock's display property
+                var displaySetting = viewingElement.style.display;
+
+                // also get the clock button, so we can change what it says
+                var viewButton = document.getElementById('viewButton');
+
+                // now toggle the clock and the button text, depending on current state
+                if (displaySetting == 'block') {
+                    // clock is visible. hide it
+                    viewingElement.style.display = 'none';
+                    // change button text
+                    viewButton.innerHTML = 'View Grades';
+                }
+                else {
+                    // clock is hidden. show it
+                    viewingElement.style.display = 'block';
+                    // change button text
+                    viewButton.innerHTML = 'Hide Grades';
+                }
+            }
+
+            function viewCertificate() {
+                var viewingElement = document.getElementById('certificates');
+                var displaySetting = viewingElement.style.display;
+                var viewButton = document.getElementById('viewCertificateButton');
+
+                if (displaySetting == 'block') {
+                    // clock is visible. hide it
+                    viewingElement.style.display = 'none';
+                    // change button text
+                    viewButton.innerHTML = '(Show Details)';
+                }
+                else {
+                    // clock is hidden. show it
+                    viewingElement.style.display = 'block';
+                    // change button text
+                    viewButton.innerHTML = '(Hide Details)';
+                }
+            }
+        </script>
+</body>
+
+</html>

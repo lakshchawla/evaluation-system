@@ -88,8 +88,7 @@ passport.use(
             null,
             false,
             { message: "Incorrect password." },
-            console.log("Incorrect Password")
-            // res.render("error_page")
+            alert("Incorrect Password"),
           );
 
         return done(null, user);
@@ -129,8 +128,6 @@ app.get("/mentor-dashboard", isLoggedIn, (req, res) => {
   });
 });
 
-
-
 app.get("/mentor-dashboard/view-students", isLoggedIn, (req, res) => {
   users.find(
     {
@@ -145,6 +142,64 @@ app.get("/mentor-dashboard/view-students", isLoggedIn, (req, res) => {
   );
 });
 
+
+app.get("/mentor-dashboard/view-students/:id", isLoggedIn, (req, res) => {
+  users.findById(req.params.id,
+    function (err, student) {
+      if (err) {
+        res.render("error_page");
+      } else {
+        res.render("./teachersview/studentDetails",
+          {
+            user: teacher,
+            student: student
+          });
+      }
+    });
+});
+
+// Grade
+app.get("/grade-registration/:id", isLoggedIn, (req, res) => {
+  users.findById(req.params.id,
+    function (err, student) {
+      if (err) {
+        res.render("error_page");
+      } else {
+        res.render("./registration_forms/grade",
+          {
+            user: teacher,
+            student: student
+          });
+      }
+    });
+});
+
+app.post("/grade-registration/:id", isLoggedIn, (req, res) => {
+  users.findByIdAndUpdate(req.params.id,
+    {
+      gradeSchema:
+      {
+        skillsGrade: req.body.skillsGrade,
+        achievementsGrade: req.body.achievementsGrade,
+        certificatesGrade: req.body.certificatesGrade,
+        feedback: req.body.feedback,
+      },
+    },
+    function (err, student) {
+      if (err) {
+        res.render("error_page");
+      } else {
+        res.render("success_page_2",
+          {
+            user: teacher
+          }
+        );
+      }
+    }
+  );
+});
+
+
 app.get("/login", isLoggedOut, (req, res) => {
   const response = {
     title: "Login",
@@ -153,6 +208,8 @@ app.get("/login", isLoggedOut, (req, res) => {
 
   res.render("login", response);
 });
+
+
 
 // Skills
 app.get("/skills-registration", isLoggedIn, (req, res) => {
@@ -294,7 +351,6 @@ app.post("/sign-up", (req, res) => {
           // profileImg: req.body.file,
         },
       });
-
       newUser.save();
     });
   });
