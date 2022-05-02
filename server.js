@@ -195,8 +195,7 @@ app.post("/grade-registration/:id", isLoggedIn, (req, res) => {
           }
         );
       }
-    }
-  );
+    });
 });
 
 
@@ -205,10 +204,18 @@ app.get("/login", isLoggedOut, (req, res) => {
     title: "Login",
     error: req.query.error,
   };
-
   res.render("login", response);
 });
 
+
+// Leaderboard
+app.get("/leaderboardView", isLoggedIn, (req, res) => {
+  users.find({ category: "Student", }, (err, students) => {
+    res.render("leaderboard", {
+      students: students,
+    });
+  });
+});
 
 
 // Skills
