@@ -23,16 +23,17 @@
 }
 
 #popup {
+    
     display: none;
     max-width: 600px;
     width: 80%;
-    max-height: 300px;
+    max-height: 350px;
     overflow-y: scroll;
     height: 80%;
-    padding: 20px;
+    padding: 30px;
     position: relative;
     background: #fff;
-    margin: 20px auto;
+    margin: 30px auto;
     margin-top: 150px;
     border-radius: 25px;
 }
@@ -50,7 +51,7 @@
 }
 
 .heading {
-    font-size:16px;
+    font-size: 16px;
 }
 
 .subhead {

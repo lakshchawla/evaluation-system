@@ -5,20 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/popup.css">
 
-
     <link rel="stylesheet"
         href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet"
         href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style>
+        .card-link {
+            padding: 10px;
+            border: 1px dashed black;
+            border-radius: 10px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .certificateName {
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .certificateName:hover {
+            color: rgb(0, 128, 255);
+        }
     </style>
 </head>
 
@@ -32,7 +48,6 @@
             <!-- Navbar -->
             <%- include("./components/header") %>
 
-
                 <!-- IF CATEGORY == STUDENT -->
                 <% if(user.category=="Student" ){ %>
 
@@ -41,9 +56,8 @@
                         <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
                             <img class="rounded-circle profilePic"
                                 src="./images/253852115_369284928277098_6803301368560095943_n.jpg" alt="" srcset="">
-                            <!-- <img class="rounded-circle profilePic" src="../public/uploads/<%= user.profile.img %>"
-                                alt="" srcset=""> -->
                         </header>
+
 
                         <main>
                             <h1>
@@ -60,6 +74,58 @@
                                     <%= user.profile.class.toUpperCase() %>
                                         <%= user.profile.section.toUpperCase() %> <br>
                             </p>
+
+
+                            <!-- View Grades -->
+                            <div class="mb-3 ">
+                                <button id="viewButton" onclick="viewGrades()" class="btn btn-primary btn-lg px-3">
+                                    View Grades <i class="fa fa-mouse-pointer" style="color:white;padding:3px"></i>
+                                </button>
+
+                                <div class="card-link" id="grades" style="display: none">
+
+                                    <% if(user.gradeSchema.feedback=="" ){ %>
+                                        <center>
+                                            <H4>!! Grades are not uploaded !!</H4>
+                                        </center>
+                                        <% } %>
+
+                                            <% if(user.gradeSchema.feedback!="" ){ %>
+                                                <center>
+                                                    <H1 style="padding:20px"><u>Grades Board</u></H1>
+                                                </center>
+                                                <H4> <i class="fa fa-thumbs-up" style="font-size:18px ;padding:4px"></i>
+                                                    Certification Grade:
+                                                    <%= user.gradeSchema.certificatesGrade.toUpperCase()%>
+                                                </H4>
+                                                <h4><i class="fa fa-thumbs-up"
+                                                        style="font-size:18px ;padding:4px"></i>Skills Grade:
+                                                    <%= user.gradeSchema.skillsGrade.toUpperCase()%>
+                                                </h4>
+                                                <h4> <i class="fa fa-thumbs-up"
+                                                        style="font-size:18px ;padding:4px"></i>Achievements Grade:
+                                                    <%= user.gradeSchema.achievementsGrade.toUpperCase()%>
+                                                </H4>
+                                                <br>
+                                                <H4><i class="fa fa-mortar-board"
+                                                        style="font-size:18px ;padding:4px"></i>Feedback:<br></H4>
+                                                <p style="margin-left: 30px;">
+                                                    > <%= user.gradeSchema.feedback%>
+                                                </p>
+                                                <% } %>
+                                </div>
+                            </div>
+
+
+                            <!-- 
+                            <% if(user.gradeSchema.feedback!="" ){ %>
+                                <p class="heading">
+
+                                    Grade added
+                                    <br>(Want to Update Grades?)
+                                <p>
+                                    <% } %> -->
+
 
                             <!-- <div class="mb-5">
                                 <a href="/docs/5.1/examples/" class="btn btn-primary btn-lg px-4">Get in touch</a>
@@ -99,73 +165,71 @@
                                         <% user.certificateSchema.reverse() %>
                                             <% user.certificateSchema.forEach(element=> { %>
                                                 <li>
-                                                    <h5 id="trigger">
+                                                    <h5>
                                                         <%= element.title %>
-                                                            <div id="overlay">
-                                                                <div id="popup">
-                                                                    <div id="close">X</div>
-                                                                    <h2>
-                                                                        <%= element.title %>
-                                                                    </h2>
-                                                                    <p>
-                                                                        <%= element.source %>
-                                                                    </p>
-                                                                    <% if(element.sponsoringUniversity!="" ){ %>
-                                                                        <p class="heading">Sponsoring University:
+                                                            <span id="viewCertificateButton" class="certificateName"
+                                                                style="cursor: pointer;" onclick="viewCertificate()">
+                                                                (Show Details)
+                                                            </span>
+                                                    </h5>
+
+
+                                                    <p class="text-muted">
+                                                        - <%= element.source %>
+                                                    </p>
+
+                                                    <div class="card-link" id="certificates" style="display: none">
+                                                        <h2>
+                                                            <%= element.title %>
+                                                        </h2>
+                                                        <p>
+                                                            <%= element.source %>
+                                                        </p>
+                                                        <% if(element.sponsoringUniversity!="" ){ %>
+                                                            <p class="heading"><b>Sponsoring
+                                                                    University: </b>
+                                                                <span class="subhead">
+                                                                    <%= element.sponsoringUniversity %>
+                                                                </span>
+                                                            <p>
+                                                                <% } %>
+                                                                    <% if(element.grade!="" ){ %>
+                                                                        <p class="heading"> <b>Grade
+                                                                                achieved:</b>
                                                                             <span class="subhead">
-                                                                                <%= element.sponsoringUniversity %>
+                                                                                <%= element.grade %>
                                                                             </span>
                                                                         <p>
                                                                             <% } %>
-                                                                                <% if(element.grade!="" ){ %>
-                                                                                    <p class="heading">Grade achieved:
-                                                                                        <span class="subhead">
-                                                                                            <%= element.grade %>
-                                                                                        </span>
-                                                                                    <p>
-                                                                                        <% } %>
-                                                                                            <p class="heading">Complete
-                                                                                                on:
-                                                                                                <span class="subhead">
-                                                                                                    <%= element.date %>
-                                                                                                </span>
-                                                                                            <p>
+                                                                                <p class="heading">
+                                                                                    <b>Complete
+                                                                                        on:</b>
+                                                                                    <span class="subhead">
+                                                                                        <%= element.date %>
+                                                                                    </span>
+                                                                                <p>
 
-                                                                                            <p class="heading">
-                                                                                                Credential ID:
-                                                                                                <span class="subhead">
-                                                                                                    <%= element.credentialID
-                                                                                                        %>
-                                                                                                </span>
-                                                                                            <p>
-                                                                                            <p class="heading">
-                                                                                                Credential Link:
-                                                                                                <span class="subhead">
-                                                                                                    <%= element.credentialLink
-                                                                                                        %>
-                                                                                                </span>
-                                                                                            <p>
-                                                                </div>
-                                                            </div>
+                                                                                <p class="heading">
+                                                                                    <b> Credential
+                                                                                        ID:</b>
+                                                                                    <span class="subhead">
+                                                                                        <%= element.credentialID %>
+                                                                                    </span>
+                                                                                <p>
+                                                                                <p class="heading">
+                                                                                    <b>Credential
+                                                                                        Link:</b>
+                                                                                    <span class="subhead">
+                                                                                        <a href="<%= element.credentialLink %>"
+                                                                                            target="_blank">
+                                                                                            <%= element.credentialLink
+                                                                                                %>
+                                                                                        </a>
 
-                                                    </h5>
-                                                    <p class="text-muted">
-                                                        - <%= element.source %>
-                                                    </p>
+                                                                                    </span>
+                                                    </div>
                                                 </li>
                                                 <% }); %>
-
-                                                    <!-- <% user.certificateSchema.reverse() %>
-                                            <% user.certificateSchema.forEach(element=> { %>
-                                                <li>
-                                                    <h5>
-                                                        <%= element.title %>
-                                                    </h5>
-                                                    <p class="text-muted">
-                                                        - <%= element.source %>
-                                                    </p>
-                                                </li>
-                                                <% }); %> -->
                                     </ul>
                                 </div>
 
@@ -278,7 +342,14 @@
                                                 <%= user.profile.section.toUpperCase() %> <br>
                                     </p>
 
+                                    <div class="mb-3">
+                                        <a href="/mentor-dashboard" class="btn btn-primary btn-lg px-3">
+                                            Go to Dashboard</a>
+                                    </div>
+
+                                    <br>
                                     <hr class="col-3 col-md-2 mb-5">
+
 
 
                                 </main>
@@ -299,23 +370,55 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
+
+
+
         <script>
+            function viewGrades() {
+                // get the clock
+                var viewingElement = document.getElementById('grades');
 
-            var overlay = document.getElementById("overlay");
-            var popup = document.getElementById("popup");
-            var trigger = document.getElementById("trigger");
+                // get the current value of the clock's display property
+                var displaySetting = viewingElement.style.display;
 
-            // Close Popup Event
-            close.onclick = function () {
-                overlay.style.display = 'none';
-                popup.style.display = 'none';
-            };
-            // Show Overlay and Popup
-            trigger.onclick = function () {
-                overlay.style.display = 'block';
-                popup.style.display = 'block';
-            };
+                // also get the clock button, so we can change what it says
+                var viewButton = document.getElementById('viewButton');
+
+                // now toggle the clock and the button text, depending on current state
+                if (displaySetting == 'block') {
+                    // clock is visible. hide it
+                    viewingElement.style.display = 'none';
+                    // change button text
+                    viewButton.innerHTML = 'View Grades';
+                }
+                else {
+                    // clock is hidden. show it
+                    viewingElement.style.display = 'block';
+                    // change button text
+                    viewButton.innerHTML = 'Hide Grades';
+                }
+            }
+
+            function viewCertificate() {
+                var viewingElement = document.getElementById('certificates');
+                var displaySetting = viewingElement.style.display;
+                var viewButton = document.getElementById('viewCertificateButton');
+
+                if (displaySetting == 'block') {
+                    // clock is visible. hide it
+                    viewingElement.style.display = 'none';
+                    // change button text
+                    viewButton.innerHTML = '(Show Details)';
+                }
+                else {
+                    // clock is hidden. show it
+                    viewingElement.style.display = 'block';
+                    // change button text
+                    viewButton.innerHTML = '(Hide Details)';
+                }
+            }
         </script>
+
 </body>
 
 </html>

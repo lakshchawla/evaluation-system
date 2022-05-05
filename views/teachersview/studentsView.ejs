@@ -8,6 +8,8 @@
     <title>Mentor Dashboard</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -21,32 +23,66 @@
             <%- include("./../components/header") %>
 
                 <div class="Dashboard">
+                    <nav class="navbar navbar-light bg-white">
+                        <div class="container-fluid">
+                            <h1 class="navbar-brand ms-auto me-auto mb-0 h1" style="text-align: center;">
+                                Class: <%= user.profile.class.toUpperCase() %>
+                            </h1>
+                        </div>
+                    </nav>
 
                     <div class="row">
-                    <% students.forEach(student=> { %>
+
+                        <% students.forEach(student=> { %>
+                            <% if(student.profile.class==user.profile.class){ %>
+                                <div class="card mt-4 ms-4 bg-li col-sm-3">
+                                    <a class="cardLink" href="/mentor-dashboard/view-students/<%= student._id %>">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item ms-auto me-auto">
+                                                <img src="./../images/253852115_369284928277098_6803301368560095943_n.jpg"
+                                                    style="height: 200px; width: 200px;"
+                                                    class="card-img-top ms-auto me-auto" alt="...">
+                                            </li>
+                                            <li class="list-group-item">
+                                                <h5 class="card-title mt-2 h3">
+                                                    <%= student.profile.name %>
+                                                </h5>
+                                                <p class="card-text">
+                                                    <%= student.uid.toUpperCase()%>
+                                                        <br>
+                                                        <%= student.profile.class.toUpperCase()%>
+                                                            <%= student.profile.section.toUpperCase()%>
+                                                                <br>
+                                                </p>
+                                                <% if(student.gradeSchema.feedback!="" ){ %>
+                                                    <p class="heading">
+                                                        <i class="fa fa-thumbs-o-up"></i>
+                                                        Grade added
+                                                        <br>(Want to Update Grades?)
+                                                    <p>
+                                                        <% } %>
+
+                                                            <% if(student.gradeSchema.feedback=="" ){ %>
+                                                                <p class="heading">
+                                                                    <i class="fa fa-question-circle-o"></i>
+                                                                    Grade pending
+                                                                    <br> (Want to Add Grades?)
+                                                                <p>
+                                                                    <% } %>
 
 
-                        <div class="card mt-4 ms-4 bg-li col-sm-3">
-                            <a class="cardLink" href="">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item ms-auto me-auto">
-                                        <img src="./../images/253852115_369284928277098_6803301368560095943_n.jpg"
-                                            style="height: 200px; width: 200px;" class="card-img-top ms-auto me-auto"
-                                            alt="...">
-                                    </li>
-                                    <li class="list-group-item">
-                                        <h5 class="card-title mt-2 h3">
-                                            <%= student.profile.name %>
-                                        </h5>
-                                        <p class="card-text">
-                                            <%= student.uid %>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </a>
-                        </div>
+                                                                        <!-- <center><a href="/mentor-dashboard/view-students/<%= student._id %>"
+                                                        class="btn btn-primary btn-lg px-3 mt-4 mb-4">
+                                                        View Student</a></center> -->
+                                            </li>
 
-                        <% }) %>
+
+                                        </ul>
+                                    </a>
+                                </div>
+                                <% } %>
+
+                                    <% }) %>
                     </div>
 
                 </div>

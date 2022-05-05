@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading </title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/certificate_styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/drag.css">
+</head>
+
+<body>
+    <!-- Side Bar -->
+    <%- include("./../components/sidebar") %>
+
+        <!-- Body -->
+        <div class="bodyContainer">
+
+            <!-- Navbar -->
+            <%- include("./../components/header") %>
+
+                <div class="container col-lg-12" style="max-width: 730px;">
+
+                    <div class="pageHeading">
+                        <h1>Add <%= student.profile.name.toUpperCase()%>'s Grade</h1>
+                    </div>
+
+                    <form action="/grade-registration/<%= student._id%>" method="POST">
+                        <!-- 
+                        gradeSchema: [
+                        {
+                        skillsGrade: String,
+                        achievementsGrade: String,
+                        certificatesGrade: String,
+                        feedback: String,
+                        }
+                        ], -->
+
+                        <!-- Grading-->
+
+                        <!-- <div class="input-box mb-3">
+                            <span class="details">Rate your efficiency (From scale of 1 to 5): <span
+                                    style="color:red">*</span> </span>
+                            <input type="number" class="form-control" name="rate" min="1" max="5"
+                                placeholder="Rate your efficiency (From scale of 1 to 5)" required>
+                        </div> -->
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Grade for <b>Certifications: </b> <span
+                                    style="color:red">*</span></label>
+                            <select class="form-select" name="certificatesGrade" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="a+">A+</option>
+                                <option value="a">A</option>
+                                <option value="b">B</option>
+                                <option value="c">C</option>
+                                <option value="d">D</option>
+                                <option value="e">E</option>
+                            </select required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Grade for <b>Achievements:</b> <span
+                                    style="color:red">*</span> </label>
+                            <select class="form-select" name="achievementsGrade" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="a+">A+</option>
+                                <option value="a">A</option>
+                                <option value="b">B</option>
+                                <option value="c">C</option>
+                                <option value="d">D</option>
+                                <option value="e">E</option>
+                            </select required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Grade for <b>Skills:</b> <span
+                                    style="color:red">*</span> </label>
+                            <select class="form-select" name="skillsGrade" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="a+">A+</option>
+                                <option value="a">A</option>
+                                <option value="b">B</option>
+                                <option value="c">C</option>
+                                <option value="d">D</option>
+                                <option value="e">E</option>
+                            </select required>
+                        </div>
+
+                        <!-- Feedback -->
+                        <div class="input-box mb-3">
+                            <span class="details">Feedback: <span style="color:red">*</span> </span>
+                            <textarea class="form-control" id="textAreaExample" rows="4"
+                                placeholder="Add Feedback for the student" name="feedback" required></textarea>
+                        </div>
+
+
+
+                        <br>
+
+                        <div class="ms-auto me-auto" style="width: fit-content;">
+                            <button class="btn btn-danger" type="submit">Submit</button>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+
+
+        </div>
+
+        <script src="/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <script src="/js/script.js"></script>
+
+
+        <!-- Drag and drop -->
+        <script src="/js/dragscript.js"></script>
+
+</body>
+
+</html>

@@ -12,13 +12,6 @@ const userSchema = new mongoose.Schema({
     email: String,
     section: String,
     class: String,
-
-    // New
-    // img:
-    // {
-    //   data: Buffer,
-    //   contentType: String
-    // }
     img: String,
 
   },
@@ -27,8 +20,7 @@ const userSchema = new mongoose.Schema({
       title: String,
       source: String,
       sponsoringUniversity: String,
-      date: Date,
-      grade: String,
+      date: { type: Date, default: Date.now }, grade: String,
       credentialID: String,
       credentialLink: String,
     },
@@ -48,7 +40,14 @@ const userSchema = new mongoose.Schema({
       rank: String,
     }
   ],
-  verified: Boolean,
+
+  gradeSchema:
+  {
+    skillsGrade: String,
+    achievementsGrade: String,
+    certificatesGrade: String,
+    feedback: String,
+  },
 });
 
 
